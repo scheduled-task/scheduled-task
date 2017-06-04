@@ -2,7 +2,7 @@
 
 echo This is a ping message. > body.txt
 
-for i in $(seq 0 2); do
+for i in $(seq 0 3); do
 	sender_varname=SENDER$i
 	sender=${!sender_varname}
 	receiver_varname=RECEIVER$i
