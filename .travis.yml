@@ -10,4 +10,4 @@ addons:
 
 script:
   - while true; do echo still working...; sleep 120; done &
-  - sh ci/run.sh
+  - bash ci/run.sh
