@@ -16,6 +16,7 @@ for i in $(seq 0 2); do
 		-S smtp=smtps://$smtp \
 		-S smtp-auth-user=$sender \
 		-S smtp-auth-password=$password \
+		-S sendwait \
 		-r $sender \
 		-s "Scheduled Task" \
 		$receiver \
