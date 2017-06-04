@@ -12,15 +12,14 @@ for i in $(seq 0 2); do
 	password_varname=PASSWORD$i
 	password=${!password_varname}
 
-	sendEmail \
-		-f $sender \
-		-u "Scheduled Task" \
-		-t $receiver \
-		-s $smtp \
-		-o tls=yes \
-		-xu $sender \
-		-xp $password \
-		-o message-file="body.txt" \
+	mailx -S smtp-auth=login \
+		-S smtp=smtps://$smtp \
+		-S smtp-auth-user=$sender \
+		-S smtp-auth-password=$password \
+		-r $sender \
+		-s "Scheduled Task" \
+		$receiver \
+		< body.txt \
 		> /dev/null \
 		2>&1
 done
