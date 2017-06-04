@@ -2,7 +2,7 @@
 
 echo This is a ping message. > body.txt
 
-for i in $(seq 0 2); do
+for i in $(seq 0 0); do
 	sender_varname=SENDER$i
 	sender=${!sender_varname}
 	receiver_varname=RECEIVER$i
@@ -12,7 +12,7 @@ for i in $(seq 0 2); do
 	password_varname=PASSWORD$i
 	password=${!password_varname}
 
-	mailx -S smtp-auth=login \
+	mailx -v -S smtp-auth=login \
 		-S smtp=smtps://$smtp \
 		-S smtp-auth-user=$sender \
 		-S smtp-auth-password=$password \
@@ -20,9 +20,7 @@ for i in $(seq 0 2); do
 		-r $sender \
 		-s "Scheduled Task" \
 		$receiver \
-		< body.txt \
-		> /dev/null \
-		2>&1
+		< body.txt
 done
 
 rm body.txt
