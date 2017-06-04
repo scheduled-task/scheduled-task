@@ -12,7 +12,7 @@ for i in $(seq 0 2); do
 	password_varname=PASSWORD$i
 	password=${!password_varname}
 
-	mailx -S smtp-auth=login \
+	heirloom-mailx -S smtp-auth=login \
 		-S smtp=smtps://$smtp \
 		-S smtp-auth-user=$sender \
 		-S smtp-auth-password=$password \
